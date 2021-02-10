@@ -2,14 +2,37 @@
 
 module Api
   module V1
-    class MessageController < ApplicationController
-      def index; end
+    class MessagesController < ApplicationController
+      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-      def create; end
+      def record_not_found
+        render json: { status: 404, message: "Message not found" }
+      end
 
-      def show; end
+      def index
+        render json: { Error: "Messages can only be accessed via their UUID" }, status: 403
+      end
 
-      def destroy; end
+      def create
+        message = Message.new(message_params)
+        if message.valid?
+          message.save
+          render json: { status: 200, message: message }
+        else
+          render json: { status: 400, error: message.errors }
+        end
+      end
+
+      def show
+        message = Message.find(params[:id])
+        render json: { status: 200, message: message }
+      end
+
+      def destroy
+        message = Message.find(params[:id])
+        render json: { status: 200, message: "Message with ID:#{message.id} was deleted"}
+        message.destroy
+      end
 
       private
 
