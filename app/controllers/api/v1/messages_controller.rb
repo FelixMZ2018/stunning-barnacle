@@ -4,14 +4,19 @@ module Api
   module V1
     class MessagesController < ApplicationController
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+      rescue_from ActiveRecord::ValueTooLong, with: :message_to_long
 
       def record_not_found
-        render json: { status: 404, message: "Message not found" }
+        render json: { message: "Message not found" }, status: 404
+      end
+
+      def message_to_long
+        render json: { message: "Message longer than 255 characters" }, status: 400
       end
 
       def index
         messages = Message.all
-        render json: {status: 200, count: messages.count, messages: messages }
+        render json: { count: messages.count, messages: messages }, status: 200
       end
 
       def create
@@ -19,9 +24,9 @@ module Api
         message.content = santize_content(message.content)
         if message.valid?
           message.save
-          render json: { status: 200, message: message }
+          render json: { message: message }, status: 200
         else
-          render json: { status: 400, error: message.errors }
+          render json: { error: message.errors }, status: 400
         end
       end
 
@@ -29,16 +34,16 @@ module Api
         message = Message.find(params[:id])
         message.counter = message.counter + 1.to_i
         message.save
-        render json: { status: 200, message: message }
+        render json: { message: message },status: 200
       end
 
       def update
         message = Message.find(params[:id])
         validate = message.update(content: santize_content(params[:content]))
         if validate
-          render json: { status: 200, message: message }
+          render json: { message: message }, status: 200
         else
-          render json: { message: message.errors }
+          render json: { message: message.errors },status: 400
         end
       end
 

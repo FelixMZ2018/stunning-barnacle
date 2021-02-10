@@ -31,8 +31,9 @@ end
 
 group :development do
   gem 'listen', '~> 3.3'
-  gem 'rspec-rails', '~> 3.6'
-
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main' # Previously '4-0-dev' or '4-0-maintenance' branch
+end
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
