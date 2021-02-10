@@ -34,7 +34,7 @@ module Api
         message = Message.find(params[:id])
         message.counter = message.counter + 1.to_i
         message.save
-        render json: { message: message },status: 200
+        render json: { message: message }, status: 200
       end
 
       def update
@@ -43,7 +43,7 @@ module Api
         if validate
           render json: { message: message }, status: 200
         else
-          render json: { message: message.errors },status: 400
+          render json: { message: message.errors }, status: 400
         end
       end
 
