@@ -1,5 +1,5 @@
-![Linters](https://github.com/FelixMZ2018/stunning-barnacle/workflows/Linters/badge.svg)
-
+![Rubocop style](https://github.com/FelixMZ2018/stunning-barnacle/workflows/Linters/badge.svg)
+![rspec API testing](https://github.com/FelixMZ2018/stunning-barnacle/workflows/Rails%20tests/badge.svg)
 
 # README
 
