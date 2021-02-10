@@ -26,6 +26,8 @@ module Api
 
       def show
         message = Message.find(params[:id])
+        message.counter = message.counter + 1.to_i
+        message.save
         render json: { status: 200, message: message }
       end
 
