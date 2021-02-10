@@ -15,6 +15,7 @@ module Api
 
       def create
         message = Message.new(message_params)
+        message.content = santize_content(message.content)
         if message.valid?
           message.save
           render json: { status: 200, message: message }
@@ -30,11 +31,15 @@ module Api
 
       def destroy
         message = Message.find(params[:id])
-        render json: { status: 200, message: "Message with ID:#{message.id} was deleted"}
+        render json: { status: 200, message: "Message with ID:#{message.id} was deleted" }
         message.destroy
       end
 
       private
+
+      def santize_content(content)
+        Rails::Html::SafeListSanitizer.new.sanitize(content, tags: ["a"], attributes: ["href"])
+      end
 
       def message_params
         params.permit(:content)
