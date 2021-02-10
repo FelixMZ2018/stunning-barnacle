@@ -10,7 +10,8 @@ module Api
       end
 
       def index
-        render json: { Error: "Messages can only be accessed via their UUID" }, status: 403
+        messages = Message.all
+        render json: {status: 200, count: messages.count, messages: messages }
       end
 
       def create
@@ -29,6 +30,16 @@ module Api
         message.counter = message.counter + 1.to_i
         message.save
         render json: { status: 200, message: message }
+      end
+
+      def update
+        message = Message.find(params[:id])
+        validate = message.update(content: santize_content(params[:content]))
+        if validate
+          render json: { status: 200, message: message }
+        else
+          render json: { message: message.errors }
+        end
       end
 
       def destroy
