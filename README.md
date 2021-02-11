@@ -16,10 +16,15 @@ can be found at https://www.notion.so/API-Demo-Documentation-76cb299bb3234cb4b17
 
 ## Startup
 
-Requirements: 
-Ruby 3.0.0 for the setup check https://www.ruby-lang.org/en/documentation/installation/ 
+### Requirements: 
+
+Ruby 3.0.0 for the setup check https://www.ruby-lang.org/en/documentation/installation/
+
 Rails 6 which can be installed by running `gem install rails`
+
 Postgresql 12.1
+
+### Cloning and starting the server
 
 To clone the repository localy `git clone ` and change into the repo folder `cd stunning-barnacle-docker`
 
