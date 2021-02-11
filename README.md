@@ -31,9 +31,12 @@ To clone the repository localy `git clone ` and change into the repo folder `cd 
 Next install the gems by running `bundle install`
 
 Create and initial the database by running
-`rails db:create`
-`rails db:migrate`
-`rails -s` to start the for the server
+
+`rails db:create` creates the database 
+
+`rails db:migrate` to initalize the database
+
+`rails -s`to start the for the server
 
 
 ## Testing
