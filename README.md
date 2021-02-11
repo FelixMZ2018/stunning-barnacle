@@ -10,7 +10,9 @@ Ruby Version: 3.0.0
 Rails Version: 6.1.2
 Database: Postgres 12.1
 
-## API Documentation: https://www.notion.so/API-Demo-Documentation-76cb299bb3234cb4b170276143fc0821
+## API Documentation: 
+
+can be found at https://www.notion.so/API-Demo-Documentation-76cb299bb3234cb4b170276143fc0821
 
 ## Startup
 
