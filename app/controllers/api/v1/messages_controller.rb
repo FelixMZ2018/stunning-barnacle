@@ -49,7 +49,7 @@ module Api
 
       def destroy
         message = Message.find(params[:id])
-        render json: { status: 200, message: "Message with ID:#{message.id} was deleted" }
+        render json: { message: "Message with ID:#{message.id} was deleted" },status: 200
         message.destroy
       end
 
