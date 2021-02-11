@@ -18,9 +18,9 @@ can be found at https://www.notion.so/API-Demo-Documentation-76cb299bb3234cb4b17
 
 ### Requirements: 
 
-Ruby 3.0.0 for the setup check https://www.ruby-lang.org/en/documentation/installation/
+Ruby 3.0.0   ( https://www.ruby-lang.org/en/documentation/installation/ )
 
-Rails 6 which can be installed by running `gem install rails`
+Rails 6   which can be installed by running `gem install rails`
 
 Postgresql 12.1
 
