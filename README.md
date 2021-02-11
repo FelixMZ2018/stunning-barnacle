@@ -4,7 +4,7 @@
 
 A demo rails/postgresql based API server
 
-# Dockerized Rails API Demo: 
+# Rails API Demo: 
 
 For the dockerized version please check https://github.com/FelixMZ2018/stunning-barnacle-docker
 
