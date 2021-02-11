@@ -28,7 +28,7 @@ Postgresql 12.1
 
 ### Cloning and starting the server
 
-To clone the repository localy `git clone ` and change into the repo folder `cd stunning-barnacle-docker`
+To clone the repository localy `git clone git@github.com:FelixMZ2018/stunning-barnacle.git` and change into the repo folder `cd stunning-barnacle-docker`
 
 Next install the gems by running `bundle install`
 
