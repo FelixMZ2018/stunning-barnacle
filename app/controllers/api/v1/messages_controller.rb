@@ -16,6 +16,11 @@ module Api
 
       def index
         messages = Message.all
+        if ENV["RAILS_ENV"] == "production"
+          Message.all.where("created_at > ?", 30.minutes.ago)
+        else
+          Message.all
+        end
         render json: { count: messages.count, messages: messages }, status: 200
       end
 
@@ -32,9 +37,20 @@ module Api
 
       def show
         message = Message.find(params[:id])
-        message.counter = message.counter + 1.to_i
-        message.save
-        render json: { message: message }, status: 200
+        if ENV["RAILS_ENV"] == "production"
+          if message["created_at"] < 30.minutes.ago
+            message.destroy
+            render json: { message: "Message not found" }, status: 404
+          else
+            message.counter = message.counter + 1.to_i
+            message.save
+            render json: { message: message }, status: 200
+          end
+        else
+          message.counter = message.counter + 1.to_i
+          message.save
+          render json: { message: message }, status: 200
+        end
       end
 
       def update
@@ -49,7 +65,7 @@ module Api
 
       def destroy
         message = Message.find(params[:id])
-        render json: { message: "Message with ID:#{message.id} was deleted" },status: 200
+        render json: { message: "Message with ID:#{message.id} was deleted" }, status: 200
         message.destroy
       end
 
